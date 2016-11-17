@@ -1,8 +1,10 @@
 <div class="contents row">
-  <%= form_for @tweet, url: tweets_path do |f| %>
-    <h3>投稿する</h3>
-    <%= f.text_field :image, placeholder: "Image Url" %>
-    <%= f.text_area :text, placeholder: "text", cols: 30, rows: 10 %>
-    <%= f.submit "Sent" %>
-  <% end %>
+  <div class="container">
+    <%= form_for @tweet, url: tweets_path do |f| %>
+      <h3>投稿する</h3>
+      <%= f.text_field :image, placeholder: "Image Url" %>
+      <%= f.text_area :text, placeholder: "text", cols: 30, rows: 10 %>
+      <%= f.submit "Sent" %>
+    <% end %>
+  </div>
 </div>
