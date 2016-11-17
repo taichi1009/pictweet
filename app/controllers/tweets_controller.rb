@@ -31,6 +31,11 @@ class TweetsController < ApplicationController
     #updateメソッドの引数はtweet_paramsとしていますが、これはどういうことでしょうか。tweet_paramsはストロングパラメーターで、つまりはparamsから:imageと:textというキーだけを残したハッシュとなっています。また本来、updateメソッドの引数は、更新したいカラム名: 更新する値とハッシュの形式を取ります。この時、ビュー側で決定するパラメーターのキーの名前を、更新するテーブルのカラム名と一致させておくことで、tweet_paramsとしてまとめるだけでupdateメソッドの引数にすることができます。
   end
 
+  def show
+    @tweet = Tweet.find(params[:id])
+    @comments = @tweet.comments.includes(:user)
+  end
+
   private
   def tweet_params
     params.require(:tweet).permit(:text, :image).merge(user_id: current_user.id)
